@@ -1,7 +1,7 @@
 {
   "version": 2,
   "functions": {
-    "api/models/*.js": {
+    "models/filesearch.js": {
       "maxDuration": 40
     }
   },
