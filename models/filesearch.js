@@ -36,7 +36,7 @@ const getAccessToken = async (req, res, next) => {
                             return res.status(400).send('Sorry, Something Went Wrong!!!');
                         }
                         else {
-                            return res.redirect(process.env.APPLICATION_URL);
+                            res.redirect(process.env.APPLICATION_URL);
                         }
                     })
                 }
