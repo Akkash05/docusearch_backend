@@ -1,7 +1,7 @@
 {
   "version": 2,
   "functions": {
-    "app.js": {
+    "api/models/*.js": {
       "maxDuration": 40
     }
   },
