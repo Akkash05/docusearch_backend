@@ -102,12 +102,10 @@ const indexUserDocContent = async (token) => {
 
     try {
         let count = 0;
-        console.log('index content');
         db.run("delete from dropbox_documents");
         const dbx = new Dropbox({ accessToken: token });
         const files = await dbx.filesListFolder({ path: "" });
         let extractFiles = files.result.entries;
-        console.log(extractFiles);
         extractFiles.forEach(async (file) => {
             if (file[".tag"] === "file") {
                 const fileContent = await dbx.filesDownload({ path: file.path_display });
@@ -126,7 +124,6 @@ const indexUserDocContent = async (token) => {
                         return false;
                     }
                     else {
-                        console.log('file_inserted', file.name);
                         count++;
                         if (count > 99) {
                             return true;
