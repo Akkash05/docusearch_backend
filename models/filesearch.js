@@ -30,7 +30,6 @@ const getAccessToken = async (req, res, next) => {
                     return res.status(400).send('Sorry, Something Went Wrong!!!');
                 }
                 else {
-                    console.log('in 33')
                     await indexUserDocContent(accessToken);
                     db.all("select * from dropbox_token_details", (err, results) => {
                         if (err) {
@@ -163,6 +162,7 @@ const indexUserDocContent = async (token) => {
                 });
             }
         });
+        console.log('returned')
         return true;
     }
     catch (err) {
