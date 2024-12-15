@@ -30,7 +30,7 @@ const getAccessToken = async (req, res, next) => {
                     return res.status(400).send('Sorry, Something Went Wrong!!!');
                 }
                 else {
-                    await indexUserDocContent(accessToken);
+                    indexUserDocContent(accessToken);
                     db.all("select * from dropbox_token_details", (err, results) => {
                         if (err) {
                             return res.status(400).send('Sorry, Something Went Wrong!!!');
@@ -100,10 +100,12 @@ const indexUserDocContent = async (token) => {
 
     try {
         let count = 0;
+        console.log('index content');
         db.run("delete from dropbox_documents");
         const dbx = new Dropbox({ accessToken: token });
         const files = await dbx.filesListFolder({ path: "" });
         let extractFiles = files.result.entries;
+        console.log(extractFiles);
         extractFiles.forEach(async (file) => {
             if (file[".tag"] === "file") {
                 const fileContent = await dbx.filesDownload({ path: file.path_display });
