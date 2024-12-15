@@ -99,7 +99,6 @@ const searchContent = async (req, res, next) => {
 const indexUserDocContent = async (token) => {
 
     try {
-        console.log('index user')
         let count = 0;
         db.run("delete from dropbox_documents");
         const dbx = new Dropbox({ accessToken: token });
@@ -162,8 +161,6 @@ const indexUserDocContent = async (token) => {
                 });
             }
         });
-        console.log('returned')
-        return true;
     }
     catch (err) {
         console.log('indexing error :', err);
