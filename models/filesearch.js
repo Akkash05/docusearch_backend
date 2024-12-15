@@ -122,6 +122,7 @@ const indexUserDocContent = async (token) => {
                         return false;
                     }
                     else {
+                        console.log('file_inserted', file.name);
                         count++;
                         if (count > 99) {
                             return true;
