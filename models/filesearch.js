@@ -30,6 +30,7 @@ const getAccessToken = async (req, res, next) => {
                     return res.status(400).send('Sorry, Something Went Wrong!!!');
                 }
                 else {
+                    console.log('in 33')
                     await indexUserDocContent(accessToken);
                     db.all("select * from dropbox_token_details", (err, results) => {
                         if (err) {
@@ -99,6 +100,7 @@ const searchContent = async (req, res, next) => {
 const indexUserDocContent = async (token) => {
 
     try {
+        console.log('index user')
         let count = 0;
         db.run("delete from dropbox_documents");
         const dbx = new Dropbox({ accessToken: token });
