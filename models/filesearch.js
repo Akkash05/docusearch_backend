@@ -40,7 +40,7 @@ const getAccessToken = async (req, res, next) => {
                             return res.redirect(process.env.APPLICATION_URL);
                         }
                     });
-                    }, 15000);
+                    }, 8000);
                 }
             });
         }
