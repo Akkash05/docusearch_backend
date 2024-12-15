@@ -31,14 +31,16 @@ const getAccessToken = async (req, res, next) => {
                 }
                 else {
                     indexUserDocContent(accessToken);
+                    setTimeout(()=>{
                     db.all("select * from dropbox_token_details", (err, results) => {
                         if (err) {
                             return res.status(400).send('Sorry, Something Went Wrong!!!');
                         }
                         else {
-                            res.redirect(process.env.APPLICATION_URL);
+                            return res.redirect(process.env.APPLICATION_URL);
                         }
-                    })
+                    });
+                    }, 15000);
                 }
             });
         }
