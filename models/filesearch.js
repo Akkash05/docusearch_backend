@@ -11,6 +11,13 @@ const getAccessToken = async (req, res, next) => {
     try {
         if (code) {
             db.run('delete from user_details');
+            console.log({
+                    code: code,
+                    grant_type: 'authorization_code',
+                    client_id: process.env.CLIENT_ID,
+                    client_secret: process.env.CLIENT_SECRET,
+                    redirect_uri: process.env.REDIRECT_URI
+                });
             const tokenResponse = await axios.post('https://api.dropbox.com/oauth2/token', null, {
                 params: {
                     code: code,
